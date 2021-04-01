@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config/dev');
+const { JWT_SECRET } = require('../config/keys');
 const Buyer = require('../models/buyer');
 const Seller = require('../models/seller');
 
