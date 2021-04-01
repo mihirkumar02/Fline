@@ -160,4 +160,8 @@ input[type=password]:focus{
     width: 80%;
     margin: 0 auto;
   }
+  #toast-container{
+    top: 60px !important;
+    right: 20% !important;
+  }
 }
