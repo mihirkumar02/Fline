@@ -162,6 +162,6 @@ input[type=password]:focus{
   }
   #toast-container{
     top: 60px !important;
-    right: 20% !important;
+    right: 5% !important;
   }
 }
