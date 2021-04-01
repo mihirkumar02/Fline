@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const { MONGO_URI } = require('./config/dev');
+const { MONGO_URI } = require('./config/keys');
 const authRoutes = require('./routes/auth');
 
 mongoose.connect(MONGO_URI,{
