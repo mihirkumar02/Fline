@@ -15,6 +15,7 @@ import SellerEmailVerified from './components/sellers/SellerEmailVerified';
 import SellerForgotPassword from './components/sellers/SellerForgotPassword';
 import SellerUpdatePassword from './components/sellers/SellerUpdatePassword';
 import AddProduct from './components/sellers/AddProduct';
+import MyProducts from './components/sellers/MyProducts';
 
 import {reducer, initialState} from './reducers/userReducer';
 
@@ -64,6 +65,7 @@ const Routing = () => {
       <Route path="/seller/forgot" component={ SellerForgotPassword } />
       <Route path="/reset/seller/:token" component={ SellerUpdatePassword } />
       <Route path="/seller/product/add" component={ AddProduct } />
+      <Route path="/seller/myproducts" component={ MyProducts } />
     </Switch>
   )
 }

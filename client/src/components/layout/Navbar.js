@@ -6,7 +6,7 @@ import M from 'materialize-css';
 const Navbar = () => {    
     const {state, dispatch} = useContext(UserContext);
     const history = useHistory();
-    
+
     const AuthLinks = () => {
       if(state.type === "seller"){
         return (
@@ -63,6 +63,7 @@ const Navbar = () => {
     }
 
     return (
+      <div>
         <nav className="white paddedNav">
            <div className="nav-wrapper">
              <Link to={state.user ? homeLink : loginLink} className="brand-logo left">Fline</Link>
@@ -75,11 +76,9 @@ const Navbar = () => {
              </form> */}
              {
                state.user ? (
+                 
+                /*<a className='dropdown-trigger btn right' href='#' data-target='nav-mobile'>Drop Me!</a>*/
                  <ul id="nav-mobile" className="right">
-                    <li>
-                      <p className="blackName">Welcome, { state.user.username }</p>
-                    </li>
-                    <li className="optionsLi"><Link to="/seller/product/add">Add</Link></li>
                     <li>
                         <button 
                             className="btn waves-effect waves-light blue darken-1"
@@ -89,12 +88,40 @@ const Navbar = () => {
                         </button>
                     </li>
                  </ul>
+                 
                ) : (
                   <AuthLinks />
                )
              }
            </div>
         </nav>
+        <nav className="underNav paddedNav">
+           <div className="nav-wrapper">
+             {
+               state.user ? (
+                 <>
+                 <ul id="nav-mobile" className="left">
+                    <li>
+                      <p className="blackName">{ state.user.username }</p>
+                    </li>
+                 </ul>
+                 {state.user.type === "seller" ? (
+                  <ul id="nav-mobile" className="right">
+                     <li className="optionsLi"><Link to="/seller/product/add">Add</Link></li>
+                  </ul>
+                 ) : (
+                   <>
+                   </>
+                 )}
+                 </>
+               ) : (
+                  <>
+                  </>
+               )
+             }
+           </div>
+        </nav>
+      </div>
     )
 }
 

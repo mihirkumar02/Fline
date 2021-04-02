@@ -3,8 +3,10 @@ const router = express.Router();
 const Product = require('../models/product');
 const isLoggedIn = require('../middleware/auth');
 
-// show all products
-// create product
+// show all products (buyer)
+// show category wise (buyer)
+// create product (seller)
+// my products (seller)
 // edit product
 // delete product
 // search product
@@ -13,9 +15,8 @@ const isLoggedIn = require('../middleware/auth');
 // add to cart
 // remove from cart
 // order
-// show category wise products
 
-router.post('/product/new', isLoggedIn ,(req, res) => {
+router.post('/product/new', isLoggedIn, (req, res) => {
     const { name, description, category, quantity, price, discount /*, options, photos*/ } = req.body;
     if(!name || !description || !category || !quantity || !price) {
         return res.status(422).json({ error: "Please enter all fields!" })
@@ -50,8 +51,13 @@ router.post('/product/new', isLoggedIn ,(req, res) => {
         })
 })
 
-router.get('/allproducts', (req, res) => {
-
+// for seller dashboard
+router.get('/myproducts', isLoggedIn, (req, res) => {
+    Product.find({ soldBy: req.user._id })
+    .then(myprods => {
+        res.json({ myprods });
+    })
+    .catch(err => console.log(err))
 })
 
 

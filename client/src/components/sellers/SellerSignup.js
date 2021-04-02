@@ -43,88 +43,86 @@ const SellerSignup = () => {
     }
 
     return (
-        <section id="formPage">
-            <div className="container">
-                <div className="signupOptions">
-                    <div className="signupForm">
-                        <div className="card signupFormBox">
-                            <div className="formHeader"> 
-                                <h3>Signup</h3>
-                            </div>
-                            <form>
-                                <input
-                                  name="name"
-                                  type="text"
-                                  placeholder="Name"
-                                  value={name}
-                                  onChange={e => setName(e.target.value)}
-                                  required
-                               />
-                               <input
-                                  name="contact"
-                                  type="text"
-                                  placeholder="Contact"
-                                  value={contact}
-                                  onChange={e => setContact(e.target.value)}
-                                  required
-                               />
-                               <input
-                                  name="storeName"
-                                  type="text"
-                                  placeholder="Store Name"
-                                  value={storeName}
-                                  onChange={e => setStoreName(e.target.value)}
-                                  required
-                               />
-                               <input
-                                  name="email"
-                                  type="email"
-                                  placeholder="Email"
-                                  value={email}
-                                  onChange={e => setEmail(e.target.value)}
-                                  required
-                               />
-                               <input
-                                  name="password"
-                                  type="password"
-                                  placeholder="Password"
-                                  value={password}
-                                  onChange={e => setPassword(e.target.value)}
-                                  required
-                               />
-                                <input
-                                  name="confirmpassword"
-                                  type="password"
-                                  placeholder="Confirm Password"
-                                  value={confirmpassword}
-                                  onChange={e => setConfirmPassword(e.target.value)}
-                                  required
-                               />
-                               <div className="formOptions">
-                                  <button
-                                     className="btn signup waves-effect waves-light green darken-1"
-                                     type="submit"
-                                     onClick={signupHandler}
-                                  >
-                                    Create Account
-                                  </button>
-                                  <div className="alternateOption">
-                                    <h6><Link to="/seller/login">Have an account?</Link></h6>
-                                  </div>
-                               </div>
-                            </form>
+        <div className="container">
+            <div className="signupOptions">
+                <div className="signupForm">
+                    <div className="card signupFormBox">
+                        <div className="formHeader"> 
+                            <h3>Signup</h3>
                         </div>
-                    </div>
-                    <div className="svgHolder">
-                        <div>
-                            <embed type="image/svg+xml" className="svg" src={seller}>
-                            </embed>
-                        </div>
-                        <h4 className="whiteText">Sell at Fline</h4>
+                        <form>
+                            <input
+                              name="name"
+                              type="text"
+                              placeholder="Name"
+                              value={name}
+                              onChange={e => setName(e.target.value)}
+                              required
+                           />
+                           <input
+                              name="contact"
+                              type="text"
+                              placeholder="Contact"
+                              value={contact}
+                              onChange={e => setContact(e.target.value)}
+                              required
+                           />
+                           <input
+                              name="storeName"
+                              type="text"
+                              placeholder="Store Name"
+                              value={storeName}
+                              onChange={e => setStoreName(e.target.value)}
+                              required
+                           />
+                           <input
+                              name="email"
+                              type="email"
+                              placeholder="Email"
+                              value={email}
+                              onChange={e => setEmail(e.target.value)}
+                              required
+                           />
+                           <input
+                              name="password"
+                              type="password"
+                              placeholder="Password"
+                              value={password}
+                              onChange={e => setPassword(e.target.value)}
+                              required
+                           />
+                            <input
+                              name="confirmpassword"
+                              type="password"
+                              placeholder="Confirm Password"
+                              value={confirmpassword}
+                              onChange={e => setConfirmPassword(e.target.value)}
+                              required
+                           />
+                           <div className="formOptions">
+                              <button
+                                 className="btn signup waves-effect waves-light green darken-1"
+                                 type="submit"
+                                 onClick={signupHandler}
+                              >
+                                Create Account
+                              </button>
+                              <div className="alternateOption">
+                                <h6><Link to="/seller/login">Have an account?</Link></h6>
+                              </div>
+                           </div>
+                        </form>
                     </div>
                 </div>
+                <div className="svgHolder">
+                    <div>
+                        <embed type="image/svg+xml" className="svg" src={seller}>
+                        </embed>
+                    </div>
+                    <h4 className="whiteText">Sell at Fline</h4>
+                </div>
             </div>
-        </section>
+        </div>
     )
 }
 

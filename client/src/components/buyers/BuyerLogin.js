@@ -45,75 +45,73 @@ const BuyerLogin = () => {
     }
 
     return (
-        <section id="formPage">
-            <div className="container">
-                <div className="userOptions">
-                    <div>
-                        <div className="card formBox">
-                            <div className="formHeader"> 
-                                <h3>Login</h3>
-                            </div>
-                            <form>
-                                <input
-                                   name="email"
-                                   type="email"
-                                   placeholder="Email"
-                                   value={email}
-                                   onChange={e => setEmail(e.target.value)}
-                                   required
-                                />
-                                <input
-                                   name="password"
-                                   type="password"
-                                   placeholder="Password"
-                                   value={password}
-                                   onChange={e => setPassword(e.target.value)}
-                                   required
-                                />
-                                <div className="formOptions">
-                                   <button
-                                      className="btn waves-effect waves-light green darken-1"
-                                      type="submit"
-                                      onClick={loginHandler}
-                                   >
-                                     Login
-                                   </button>
-                                   <div className="alternateOption">
-                                     <h6><Link to="/register">New User?</Link></h6>
-                                   </div>
-                                </div>
-                                <div className="center">
-                                    <div className="alternateOption">
-                                         <h6><Link to="/forgot">Forgot Password?</Link></h6>
-                                    </div>
-                                </div>
-                            </form>
+        <div className="container">
+            <div className="userOptions">
+                <div>
+                    <div className="card formBox">
+                        <div className="formHeader"> 
+                            <h3>Login</h3>
                         </div>
-                    </div>
-                    <div>
-                        <div className="card imageBox">
-                            <div className="formHeader"> 
-                                <h3>Sell at Fline</h3>
+                        <form>
+                            <input
+                               name="email"
+                               type="email"
+                               placeholder="Email"
+                               value={email}
+                               onChange={e => setEmail(e.target.value)}
+                               required
+                            />
+                            <input
+                               name="password"
+                               type="password"
+                               placeholder="Password"
+                               value={password}
+                               onChange={e => setPassword(e.target.value)}
+                               required
+                            />
+                            <div className="formOptions">
+                               <button
+                                  className="btn waves-effect waves-light green darken-1"
+                                  type="submit"
+                                  onClick={loginHandler}
+                               >
+                                 Login
+                               </button>
+                               <div className="alternateOption">
+                                 <h6><Link to="/register">New User?</Link></h6>
+                               </div>
                             </div>
                             <div className="center">
-                                <div>
-                                    <img className="optionsImage" src={sell} alt="Sell"/>
+                                <div className="alternateOption">
+                                     <h6><Link to="/forgot">Forgot Password?</Link></h6>
                                 </div>
                             </div>
-                            <div className="center sellerOption">
-                                <button
-                                    className="btn waves-effect waves-light deep-orange"
-                                    type="button"
-                                    onClick={switchUserType}
-                                 >
-                                    Become a Seller
-                                </button>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <div className="card imageBox">
+                        <div className="formHeader"> 
+                            <h3>Sell at Fline</h3>
+                        </div>
+                        <div className="center">
+                            <div>
+                                <img className="optionsImage" src={sell} alt="Sell"/>
                             </div>
+                        </div>
+                        <div className="center sellerOption">
+                            <button
+                                className="btn waves-effect waves-light deep-orange"
+                                type="button"
+                                onClick={switchUserType}
+                             >
+                                Become a Seller
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
 

@@ -36,7 +36,6 @@ body{
 }
 
 .formBox{
-  margin-top: 25vh;
   padding: 20px 14px;
 }
 
@@ -94,9 +93,7 @@ h3{
 }
 
 .blackName{
-  color: black !important;
-  margin-right: 20px !important;
-  margin-top: 0 !important;
+  margin: 0 5px 0 0 !important;
   font-style: italic;
 }
 
@@ -150,7 +147,10 @@ input[type=password]:focus{
   margin-left: 30px;
 }
 .optionsLi{
-  margin-right: 20px;
+  margin-right: 4px;
+}
+.optionsLi a{
+  color: white !important;
 }
 
 .addProductForm{
@@ -164,12 +164,20 @@ input[type=password]:focus{
   color: white !important;
   text-decoration: none;
 }
+
 .dashboardBox{
-  margin-top: 10vh;
   padding: 20px 14px;
 }
 .dashboardBox button{
   margin-top: 14px;
+}
+
+.sellerHome{
+  padding-top: 15vh;
+  margin-bottom: 0;
+}
+.underNav{
+  background: #242B2E;
 }
 
 @media screen and (max-width:830px){
@@ -193,5 +201,11 @@ input[type=password]:focus{
   }
   .addProductForm{
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .dashboardBox{
+    min-width: 200px;
   }
 }

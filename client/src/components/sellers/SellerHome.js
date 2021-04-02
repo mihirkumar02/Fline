@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const SellerHome = () => {
     return (
         <div className="container">
-            <div className="row">
-                <div className="col s12 m4">
+            <div className="row sellerHome">
+                <div className="col s12 m6">
                     <div className="card dashboardBox">
                         <div className="center">
                             <h4>Add a Product</h4>
@@ -17,6 +17,22 @@ const SellerHome = () => {
                                 type="button"  
                              >
                                 <Link to="/seller/product/add">Add</Link>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="col s12 m6">
+                    <div className="card dashboardBox">
+                        <div className="center">
+                            <h4>My Products</h4>
+                        </div>
+                        {/* picture */}
+                        <div className="center sellerOption">
+                            <button
+                                className="btn waves-effect waves-light orange accent-3"
+                                type="button"  
+                             >
+                                <Link to="/seller/myproducts">View</Link>
                             </button>
                         </div>
                     </div>

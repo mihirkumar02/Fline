@@ -5,10 +5,10 @@ import M from 'materialize-css';
 const AddProduct = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("");
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
     const [discount, setDiscount] = useState("");
+    const [category, setCategory] = useState("");
 
     const history = useHistory();
 
@@ -66,7 +66,7 @@ const AddProduct = () => {
                               onChange={e => setDescription(e.target.value)}
                               required
                            />
-                           <input
+                            <input
                               name="category"
                               type="text"
                               placeholder="Category"
