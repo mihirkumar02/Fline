@@ -40,6 +40,7 @@ const BuyerLogin = () => {
 
     const switchUserType = () => {
         dispatch({type: "USERTYPE", payload: "seller"})
+        M.toast({html: "Seller's Section", classes: "purple darken-1"})
         history.push('/seller/login');
     }
 
