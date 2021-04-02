@@ -77,6 +77,10 @@ const Navbar = () => {
                state.user ? (
                  <ul id="nav-mobile" className="right">
                     <li>
+                      <p className="blackName">Welcome, { state.user.username }</p>
+                    </li>
+                    <li className="optionsLi"><Link to="/seller/product/add">Add</Link></li>
+                    <li>
                         <button 
                             className="btn waves-effect waves-light blue darken-1"
                             onClick={logout}

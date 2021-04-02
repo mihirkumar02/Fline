@@ -93,6 +93,13 @@ h3{
   height: 100vh;
 }
 
+.blackName{
+  color: black !important;
+  margin-right: 20px !important;
+  margin-top: 0 !important;
+  font-style: italic;
+}
+
 input[type=text]:focus{
   border-bottom: 1px solid #3d0575!important;
   box-shadow: 0 1px 0 0 #3d0575 !important;
@@ -142,8 +149,28 @@ input[type=password]:focus{
   margin-top: 18vh;
   margin-left: 30px;
 }
+.optionsLi{
+  margin-right: 20px;
+}
 
-
+.addProductForm{
+  width: 50%;
+  margin: 0 auto;
+}
+.sellerOption button a{
+  color: white !important;
+}
+.sellerOption button a:hover{
+  color: white !important;
+  text-decoration: none;
+}
+.dashboardBox{
+  margin-top: 10vh;
+  padding: 20px 14px;
+}
+.dashboardBox button{
+  margin-top: 14px;
+}
 
 @media screen and (max-width:830px){
   .userOptions{
@@ -163,5 +190,8 @@ input[type=password]:focus{
   #toast-container{
     top: 60px !important;
     right: 0 !important;
+  }
+  .addProductForm{
+    width: 80%;
   }
 }

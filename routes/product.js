@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const Product = require('../models/product');
+const isLoggedIn = require('../middleware/auth');
 
 // show all products
 // create product
@@ -12,6 +14,41 @@ const router = express.Router();
 // remove from cart
 // order
 // show category wise products
+
+router.post('/product/new', isLoggedIn ,(req, res) => {
+    const { name, description, category, quantity, price, discount /*, options, photos*/ } = req.body;
+    if(!name || !description || !category || !quantity || !price) {
+        return res.status(422).json({ error: "Please enter all fields!" })
+    }
+
+    if(quantity < 0 || price < 0){
+        return res.status(422).json({ error: "Quantity / Price can't be negative!" })
+    }
+
+    if(discount && discount < 0){
+        return res.status(422).json({ error: "Discount can't be negative!" })
+    }
+
+    req.user.password = undefined;
+    const product = new Product({
+        name,
+        description,
+        category,
+        quantity,
+        price,
+        discount,
+        //photo: url,
+        soldBy: req.user
+    })
+
+    product.save()
+        .then(result => {
+            res.json({ product: result })
+        }) 
+        .catch(err => {
+            console.log(err);
+        })
+})
 
 router.get('/allproducts', (req, res) => {
 

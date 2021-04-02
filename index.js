@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const { MONGO_URI } = require('./config/keys');
 const authRoutes = require('./routes/auth');
+const productRoutes = require('./routes/product');
 
 mongoose.connect(MONGO_URI,{
     useNewUrlParser: true,
@@ -13,6 +14,7 @@ mongoose.connect(MONGO_URI,{
 
 app.use(express.json());
 app.use(authRoutes);
+app.use(productRoutes);
 
 const PORT = process.env.PORT || 5000;
 
