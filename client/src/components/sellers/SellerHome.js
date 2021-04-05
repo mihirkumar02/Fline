@@ -24,7 +24,7 @@ const SellerHome = () => {
                 <div className="col s12 m6">
                     <div className="card dashboardBox">
                         <div className="center">
-                            <h4>My Products</h4>
+                            <h4>Inventory</h4>
                         </div>
                         {/* picture */}
                         <div className="center sellerOption">
@@ -32,7 +32,7 @@ const SellerHome = () => {
                                 className="btn waves-effect waves-light orange accent-3"
                                 type="button"  
                              >
-                                <Link to="/seller/myproducts">View</Link>
+                                <Link to="/seller/inventory">View</Link>
                             </button>
                         </div>
                     </div>
