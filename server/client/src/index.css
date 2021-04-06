@@ -1,0 +1,211 @@
+body{
+  background: #242B2E;
+  margin: 0;
+  padding: 0;
+  font-family: 'Comfortaa', sans-serif !important;
+}
+
+.paddedNav{
+  padding: 0 20px;
+}
+
+.nav-wrapper a{
+  color: black !important;
+}
+
+.brand-logo{
+  font-family: 'Merienda One', cursive !important;
+}
+
+#formPage{
+  height: 100vh;
+}
+.signup{
+  margin-top: 10px;
+}
+
+.userOptions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signupFormBox{
+  margin-top: 15vh;
+  padding: 20px 14px;
+}
+
+.formBox{
+  padding: 20px 14px;
+}
+
+.formBox button{
+  margin-top: 14px;
+}
+
+.imageBox{
+  margin-top: 15vh;
+  padding: 20px 30px;
+}
+
+.imageBox button{
+  margin-top: 14px;
+}
+.verifyBox{
+  margin: 30vh auto 0 auto;
+  padding: 20px 14px;
+  width: 50%;
+}
+
+.verifyBox button a{
+  color: white !important;
+}
+
+.verifyBox button a:hover{
+  text-decoration: none !important;
+  color: white !important;
+}
+
+h3{
+  margin: 0;
+}
+
+.formHeader{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.formOptions{
+  display: flex;
+  justify-content: space-around;
+}
+
+.alternateOption{
+  margin-top: 10px;
+}
+
+.alternateOption h6 a{
+  color: #3d0575;
+}
+
+#carouselHolder{
+  height: 100vh;
+}
+
+.blackName{
+  margin: 0 5px 0 0 !important;
+  font-style: italic;
+}
+
+input[type=text]:focus{
+  border-bottom: 1px solid #3d0575!important;
+  box-shadow: 0 1px 0 0 #3d0575 !important;
+}
+
+input[type=email]:focus{
+  border-bottom: 1px solid #3d0575 !important;
+  box-shadow: 0 1px 0 0 #3d0575 !important;
+}
+
+input[type=password]:focus{
+  border-bottom: 1px solid #3d0575 !important;
+  box-shadow: 0 1px 0 0 #3d0575 !important;
+}
+#toast-container{
+  top: 60px !important;
+  right: 45% !important;
+}
+.optionsImage{
+  width: 200px;
+  height: auto;
+}
+.signupOptions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.signupForm{
+  width: 50%;
+}
+.svgHolder{
+  text-align: center;
+}
+.whiteText{
+  color: white;
+}
+.svg{
+  max-width: 400px;
+  height: auto;
+  margin-top: 10vh;
+  margin-left: 30px;
+}
+
+.svgLogin{
+  max-width: 400px;
+  height: auto;
+  margin-top: 18vh;
+  margin-left: 30px;
+}
+.optionsLi{
+  margin-right: 4px;
+}
+.optionsLi a{
+  color: white !important;
+}
+
+.addProductForm{
+  width: 50%;
+  margin: 0 auto;
+}
+.sellerOption button a{
+  color: white !important;
+}
+.sellerOption button a:hover{
+  color: white !important;
+  text-decoration: none;
+}
+
+.dashboardBox{
+  padding: 20px 14px;
+}
+.dashboardBox button{
+  margin-top: 14px;
+}
+
+.sellerHome{
+  padding-top: 15vh;
+  margin-bottom: 0;
+}
+.underNav{
+  background: #242B2E;
+}
+
+@media screen and (max-width:830px){
+  .userOptions{
+    flex-direction: column;
+  }
+  .svgHolder{
+    display: none;
+  }
+  .signupForm{
+    width: 80%;
+    margin: 0 auto;
+  }
+  .loginForm{
+    width: 80%;
+    margin: 0 auto;
+  }
+  #toast-container{
+    top: 60px !important;
+    right: 0 !important;
+  }
+  .addProductForm{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .dashboardBox{
+    min-width: 200px;
+  }
+}
