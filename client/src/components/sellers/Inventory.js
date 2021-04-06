@@ -16,7 +16,7 @@ const MyProducts = () => {
 
     return (
         <div>
-            
+            <table></table>
         </div>
     )
 }
