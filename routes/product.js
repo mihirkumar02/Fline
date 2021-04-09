@@ -5,8 +5,6 @@ const isLoggedIn = require('../middleware/auth');
 
 // show all products (buyer)
 // show category wise (buyer)
-// create product (seller)
-// my products (seller)
 // edit product
 // delete product
 // search product
@@ -59,6 +57,10 @@ router.get('/myproducts', isLoggedIn, (req, res) => {
     })
     .catch(err => console.log(err))
 })
+
+router.put('/product/:id', isLoggedIn, (req, res) => {
+    
+});
 
 
 module.exports = router;
