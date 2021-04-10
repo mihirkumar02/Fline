@@ -58,6 +58,12 @@ router.get('/myproducts', isLoggedIn, (req, res) => {
     .catch(err => console.log(err))
 })
 
+// to fetch details in edit form
+router.get('/product/:id', isLoggedIn, (req, res) => {
+    
+})
+
+// to save edit details
 router.put('/product/:id', isLoggedIn, (req, res) => {
     
 });
