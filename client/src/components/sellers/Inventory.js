@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { useHistory, Link } from 'react-router-dom'
+import {UserContext} from '../../App';
 
 const MyProducts = () => {
     const [products, setProducts] = useState([])
-    
+    const {dispatch} = useContext(UserContext);
+
+    const history = useHistory();
+
     useEffect(() => {
         fetch('/myproducts', {
             headers: {
@@ -16,7 +21,19 @@ const MyProducts = () => {
         })
     }, [])
 
-
+    const fetchEditForm = (id) => {
+        fetch(`/product/${id}`, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("jwt"),
+                "Type": "seller"
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            dispatch({type:"EDITPRODUCT", payload: data.product})
+            history.push(`/product/${id}/edit`)
+        })
+    }
 
     return (
         <div className="container tableContainer">
@@ -28,6 +45,7 @@ const MyProducts = () => {
                           <th>Quantity</th>
                           <th>Price</th>
                           <th>Discount</th>
+                          <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,8 +58,8 @@ const MyProducts = () => {
                                             <td><b>{item.description}</b></td>
                                             <td><b>{item.quantity}</b></td>
                                             <td><b>{item.price}</b></td>
-                                            <td><b>{item.discount} %</b></td>
-                            
+                                            <td><b>{item.discount} %</b></td> 
+                                            <td><i onClick={() => fetchEditForm(item._id)} className="edit material-icons">edit</i></td> 
                                         </tr>
                                     )
                                 }

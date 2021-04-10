@@ -60,7 +60,11 @@ router.get('/myproducts', isLoggedIn, (req, res) => {
 
 // to fetch details in edit form
 router.get('/product/:id', isLoggedIn, (req, res) => {
-    
+    Product.findById(req.params.id)
+        .then(product => {
+            res.json({ product })
+        })
+        .catch(err => console.log(err))
 })
 
 // to save edit details
