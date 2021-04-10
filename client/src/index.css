@@ -179,6 +179,9 @@ input[type=password]:focus{
 .underNav{
   background: #242B2E;
 }
+.tableContainer{
+  margin-top: 40px;
+}
 
 @media screen and (max-width:830px){
   .userOptions{
