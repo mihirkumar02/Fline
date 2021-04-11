@@ -1,32 +1,25 @@
 export const initialState = {
     type: "buyer",
-    user: null,
-    product: null
+    user: null
 };
 
 export const reducer = (state, action) => {
     if(action.type === "USER"){ // on user login
         return {
             type: action.payload.type,
-            user: action.payload,
-            product: null
+            user: action.payload
         }
     }
     if(action.type === "CLEAR"){
         return {
             type: action.payload,
-            user: null,
-            product: null
+            user: null
         }
     }
     if(action.type === "USERTYPE"){
+        // setting user type for navbar
         return {
             type: action.payload // usertype
-        }
-    }
-    if(action.type === "EDITPRODUCT"){
-        return{
-            product: action.payload
         }
     }
     return state

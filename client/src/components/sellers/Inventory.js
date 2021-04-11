@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useContext } from 'react'
-import { useHistory, Link } from 'react-router-dom'
-import {UserContext} from '../../App';
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 const MyProducts = () => {
     const [products, setProducts] = useState([])
-    const {dispatch} = useContext(UserContext);
 
     const history = useHistory();
 
@@ -22,17 +20,7 @@ const MyProducts = () => {
     }, [])
 
     const fetchEditForm = (id) => {
-        fetch(`/product/${id}`, {
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt"),
-                "Type": "seller"
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            dispatch({type:"EDITPRODUCT", payload: data.product})
-            history.push(`/product/${id}/edit`)
-        })
+        history.push(`/seller/product/${id}/edit`)
     }
 
     return (

@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import M from 'materialize-css';
 
 const EditProduct = () => {
+    const history = useHistory();
+    const {id} = useParams();
+
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
     const [discount, setDiscount] = useState("");
-    const [category, setCategory] = useState("");
 
-    const history = useHistory();
+
+    useEffect(() => {
+        fetch(`/product/${id}`, {
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("jwt"),
+                "Type": "seller"
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            setName(data.product.name)
+            setDescription(data.product.description)
+            setQuantity(data.product.quantity)
+            setPrice(data.product.price)
+            setDiscount(data.product.discount)
+        })
+    }, [])
 
     const productSubmit = e => {
         e.preventDefault();
@@ -24,7 +42,6 @@ const EditProduct = () => {
             body: JSON.stringify({
                 name,
                 description,
-                category,
                 quantity,
                 price,
                 discount
@@ -35,7 +52,7 @@ const EditProduct = () => {
             if(data.error){
                 M.toast({ html: data.error, classes: "red darken-3"})
             } else {
-                M.toast({ html: "Product Added!", classes:"green darken-2" });
+                M.toast({ html: "Product Updated!", classes:"green darken-2" });
                 history.push('/seller/');
             }
         })
@@ -53,7 +70,6 @@ const EditProduct = () => {
                             <input
                               name="name"
                               type="text"
-                              placeholder="Product Name"
                               value={name}
                               onChange={e => setName(e.target.value)}
                               required
@@ -61,23 +77,13 @@ const EditProduct = () => {
                            <input
                               name="description"
                               type="text"
-                              placeholder="Product Description"
                               value={description}
                               onChange={e => setDescription(e.target.value)}
-                              required
-                           />
-                            <input
-                              name="category"
-                              type="text"
-                              placeholder="Category"
-                              value={category}
-                              onChange={e => setCategory(e.target.value)}
                               required
                            />
                            <input
                               name="quantity"
                               type="number"
-                              placeholder="Quantity"
                               value={quantity}
                               onChange={e => setQuantity(e.target.value)}
                               required
@@ -85,7 +91,6 @@ const EditProduct = () => {
                            <input
                               name="price"
                               type="number"
-                              placeholder="Price"
                               value={price}
                               onChange={e => setPrice(e.target.value)}
                               required
@@ -93,7 +98,6 @@ const EditProduct = () => {
                             <input
                               name="discount"
                               type="number"
-                              placeholder="Discount"
                               value={discount}
                               onChange={e => setDiscount(e.target.value)}
                               required
@@ -104,7 +108,7 @@ const EditProduct = () => {
                                  type="submit"
                                  onClick={productSubmit}
                               >
-                                Add Product
+                                Update Product
                               </button>
                               <div className="alternateOption">
                                 <h6><Link to="/seller/">Home</Link></h6>
