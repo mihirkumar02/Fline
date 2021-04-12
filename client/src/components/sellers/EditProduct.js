@@ -30,10 +30,10 @@ const EditProduct = () => {
         })
     }, [])
 
-    const productSubmit = e => {
+    const productUpdate = e => {
         e.preventDefault();
-        fetch("/product/new", {
-            method: "post",
+        fetch(`/product/${id}`, {
+            method: "put",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + localStorage.getItem("jwt"),
@@ -51,7 +51,9 @@ const EditProduct = () => {
         .then(data => {
             if(data.error){
                 M.toast({ html: data.error, classes: "red darken-3"})
-            } else {
+            } 
+            
+            if(data.success){
                 M.toast({ html: "Product Updated!", classes:"green darken-2" });
                 history.push('/seller/');
             }
@@ -106,7 +108,7 @@ const EditProduct = () => {
                               <button
                                  className="btn signup waves-effect waves-light green darken-1"
                                  type="submit"
-                                 onClick={productSubmit}
+                                 onClick={productUpdate}
                               >
                                 Update Product
                               </button>

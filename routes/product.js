@@ -69,7 +69,23 @@ router.get('/product/:id', isLoggedIn, (req, res) => {
 
 // to save edit details
 router.put('/product/:id', isLoggedIn, (req, res) => {
-    
+    const {name, description, quantity, price, discount} = req.body;
+
+    if(!name || !description || !quantity || !price || !discount){
+        return res.status(422).json({ error: "Please enter all fields! "})
+    }
+
+    Product.findByIdAndUpdate(req.params.id, {
+        name,
+        description,
+        quantity,
+        price,
+        discount
+    })
+        .then(product => {
+            res.json({ success: true, product})
+        })
+        .catch(err => console.log(err))
 });
 
 
