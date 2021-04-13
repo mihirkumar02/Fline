@@ -4,6 +4,8 @@ import M from 'materialize-css'
 
 const MyProducts = () => {
     const [products, setProducts] = useState([])
+    const [isOpen, setIsOpen] = useState(false)
+    const [tbdId, setTbdId] = useState("")
 
     const history = useHistory();
 
@@ -23,22 +25,65 @@ const MyProducts = () => {
     const fetchEditForm = (id) => {
         history.push(`/seller/product/${id}/edit`)
     }
+ 
+    const Popup = () => {
+        return (
+          <div className="popup-box">
+            <div className="inner-box">
+              <span 
+                className="material-icons close-icon"
+                onClick={closePopup}
+              >clear</span>
+              <div className="popup-content">
+                    <div className="center">
+                        <h5>Are you sure?</h5>
+                    </div>
+                    <div className="deleteOptions">
+                        <button 
+                            className="btn waves-effect waves-light red darken-1"
+                            onClick={() => deleteProduct(tbdId)}    
+                        >
+                            Confirm
+                        </button>
+                        <button 
+                            className="btn waves-effect waves-light green darken-2"
+                            onClick={closePopup}
+                        >
+                            Cancel
+                        </button>
+                    </div>
+              </div>
+            </div>
+          </div>
+        );
+    };
+
+    const openPopup = (id) => {
+        setIsOpen(true)
+        setTbdId(id)
+    }
+
+    const closePopup = () => {
+        setIsOpen(false)
+    }
 
     const deleteProduct = (id) => {
-        fetch(`/product/${id}`, {
-            method: "delete",
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt"),
-                "Type": "seller"
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                M.toast({ html: "Product Removed!", classes:"green darken-2" });
-                history.push('/seller/');
-            }
-        })
+        if(id){
+            fetch(`/product/${id}`, {
+                method: "delete",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("jwt"),
+                    "Type": "seller"
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success){
+                    M.toast({ html: "Product Removed!", classes:"green darken-2" });
+                    history.push('/seller/');
+                }
+            })
+        }
     }
 
     return (
@@ -67,7 +112,7 @@ const MyProducts = () => {
                                             <td><b>{item.price}</b></td>
                                             <td><b>{item.discount} %</b></td> 
                                             <td><i onClick={() => fetchEditForm(item._id)} className="edit material-icons">edit</i></td> 
-                                            <td><i onClick={() => deleteProduct(item._id)} className="edit material-icons">delete</i></td> 
+                                            <td><i onClick={() => openPopup(item._id)} className="edit material-icons">delete</i></td> 
                                         </tr>
                                     )
                                 }
@@ -75,6 +120,8 @@ const MyProducts = () => {
                         )}
                     </tbody>
                 </table>
+
+                {isOpen ? <Popup/> : <></>}
         </div>
     )
 }
