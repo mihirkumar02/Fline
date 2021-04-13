@@ -108,6 +108,7 @@ const Navbar = () => {
                  {state.user.type === "seller" ? (
                   <ul id="nav-mobile" className="right">
                      <li className="optionsLi"><Link to="/seller/product/add">Add</Link></li>
+                     <li className="optionsLi"><Link to="/seller/inventory">Inventory</Link></li>
                   </ul>
                  ) : (
                    <>

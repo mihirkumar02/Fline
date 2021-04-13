@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import M from 'materialize-css'
 
 const MyProducts = () => {
     const [products, setProducts] = useState([])
@@ -23,6 +24,23 @@ const MyProducts = () => {
         history.push(`/seller/product/${id}/edit`)
     }
 
+    const deleteProduct = (id) => {
+        fetch(`/product/${id}`, {
+            method: "delete",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("jwt"),
+                "Type": "seller"
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                M.toast({ html: "Product Removed!", classes:"green darken-2" });
+                history.push('/seller/');
+            }
+        })
+    }
+
     return (
         <div className="container tableContainer">
             <table className="responsive-table centered">
@@ -34,6 +52,7 @@ const MyProducts = () => {
                           <th>Price</th>
                           <th>Discount</th>
                           <th>Edit</th>
+                          <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +67,7 @@ const MyProducts = () => {
                                             <td><b>{item.price}</b></td>
                                             <td><b>{item.discount} %</b></td> 
                                             <td><i onClick={() => fetchEditForm(item._id)} className="edit material-icons">edit</i></td> 
+                                            <td><i onClick={() => deleteProduct(item._id)} className="edit material-icons">delete</i></td> 
                                         </tr>
                                     )
                                 }
