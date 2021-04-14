@@ -4,7 +4,6 @@ body{
   padding: 0;
   font-family: 'Comfortaa', sans-serif !important;
 }
-
 .paddedNav{
   padding: 0 20px;
 }
@@ -97,6 +96,10 @@ h3{
   font-style: italic;
 }
 
+input{
+  padding-left: 4px !important;
+}
+
 input[type=text]:focus{
   border-bottom: 1px solid #3d0575!important;
   box-shadow: 0 1px 0 0 #3d0575 !important;
@@ -111,6 +114,24 @@ input[type=password]:focus{
   border-bottom: 1px solid #3d0575 !important;
   box-shadow: 0 1px 0 0 #3d0575 !important;
 }
+select{
+  display: block;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  font-size: 16px;
+  background-color: transparent;
+  height: 3rem;
+  margin: 0 0 8px 0;
+  padding: 0 !important;
+  border-radius: 0;
+  width: 100%;
+}
+select:focus{
+  outline: none;
+  border-bottom: 1px solid #3d0575!important;
+  box-shadow: 0 1px 0 0 #3d0575 !important;
+}
+
 #toast-container{
   top: 60px !important;
   right: 45% !important;

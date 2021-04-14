@@ -66,14 +66,12 @@ const AddProduct = () => {
                               onChange={e => setDescription(e.target.value)}
                               required
                            />
-                            <input
-                              name="category"
-                              type="text"
-                              placeholder="Category"
-                              value={category}
-                              onChange={e => setCategory(e.target.value)}
-                              required
-                           />
+                            <select onChange={e => setCategory(e.target.value)}>
+                              <option value="" disabled selected>Category</option>
+                              <option value="Sports">Sports</option>
+                              <option value="Fashion">Fashion</option>
+                              <option value="Grocery">Grocery</option>
+                            </select>
                            <input
                               name="quantity"
                               type="number"
