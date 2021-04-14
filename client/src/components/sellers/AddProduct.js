@@ -42,7 +42,6 @@ const AddProduct = () => {
     }
 
     return (
-        <section id="formPage">
             <div className="container">
                 <div className="addProductForm">
                     <div className="card signupFormBox">
@@ -112,7 +111,6 @@ const AddProduct = () => {
                     </div>
                 </div>
             </div>
-        </section>
     )
 }
 
