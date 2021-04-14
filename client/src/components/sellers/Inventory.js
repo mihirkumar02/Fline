@@ -60,7 +60,7 @@ const MyProducts = () => {
 
     const openPopup = (id) => {
         setIsOpen(true)
-        setTbdId(id)
+        setTbdId(id) // id to be deleted (TBD)
     }
 
     const closePopup = () => {

@@ -5,12 +5,10 @@ const isLoggedIn = require('../middleware/auth');
 
 // show all products (buyer)
 // show category wise (buyer)
-// edit product
-// delete product
-// search product
-// add product review
-// delete review
-// add to cart
+// search product (buyer)
+// add product review (buyer)
+// delete review (buyer)
+// add to cart 
 // remove from cart
 // order
 
