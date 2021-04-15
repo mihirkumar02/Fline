@@ -67,9 +67,27 @@ const AddProduct = () => {
                            />
                             <select onChange={e => setCategory(e.target.value)}>
                               <option value="" disabled selected>Category</option>
-                              <option value="Sports">Sports</option>
-                              <option value="Fashion">Fashion</option>
+                              <option value="Appliances">Appliances</option>
+                              <option value="Baby Products">Baby Products</option>
+                              <option value="Bags">Bags</option>
+                              <option value="Beauty">Beauty</option>
+                              <option value="Books">Books</option>
+                              <option value="Cars">Cars</option>
+                              <option value="Computers">Computers</option>
+                              <option value="Electronics">Electronics</option>
+                              <option value="Fitness">Fitness</option>
                               <option value="Grocery">Grocery</option>
+                              <option value="Kids Fashion">Kids' Fashion</option>
+                              <option value="Luggage">Luggage</option>
+                              <option value="Mens Fashion">Mens' Fashion</option>
+                              <option value="Music">Music</option>
+                              <option value="Mobiles">Mobiles</option>
+                              <option value="Motorbikes">Motorbikes</option>
+                              <option value="Movies">Movies</option>
+                              <option value="Toys">Toys</option>
+                              <option value="TV">TV</option>
+                              <option value="Video Games">Video Games</option>
+                              <option value="Womens Fashion">Womens' Fashion</option>
                             </select>
                            <input
                               name="quantity"
