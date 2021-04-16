@@ -38,6 +38,40 @@ const SellerHome = () => {
                     </div>
                 </div>
             </div>
+            <div className="row sellerHome">
+                <div className="col s12 m6">
+                    <div className="card dashboardBox">
+                        <div className="center">
+                            <h4>Sales</h4>
+                        </div>
+                        {/* picture */}
+                        <div className="center sellerOption">
+                            <button
+                                className="btn waves-effect waves-light pink accent-3"
+                                type="button"  
+                             >
+                                <Link to="/seller/product/add">Add</Link>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="col s12 m6">
+                    <div className="card dashboardBox">
+                        <div className="center">
+                            <h4>Customer Feedback</h4>
+                        </div>
+                        {/* picture */}
+                        <div className="center sellerOption">
+                            <button
+                                className="btn waves-effect waves-light orange accent-3"
+                                type="button"  
+                             >
+                                <Link to="/seller/inventory">View</Link>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
