@@ -6,6 +6,10 @@ const BuyerHome = () => {
             <section id="carouselHolder">
 
             </section>
+            <section id="productCards">
+
+            </section>
+            
         </div>
     )
 }
