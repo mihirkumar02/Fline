@@ -94,4 +94,12 @@ router.delete('/product/:id', isLoggedIn, (req, res) => {
         .catch(err => console.log(err))
 })
 
+router.get('/allproducts', isLoggedIn, (req, res) => {
+    Product.find()
+        .then(products => {
+            res.json({ products })
+        })
+        .catch(err => console.log(err))
+})
+
 module.exports = router;
