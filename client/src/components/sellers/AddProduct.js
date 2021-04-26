@@ -97,11 +97,12 @@ const AddProduct = () => {
                             </select>
                             <div className="file-field input-field">
                                 <div className="btn">
-                                    <span>Upload Image(s)</span>
+                                    <span>Upload Images</span>
                                     <input 
                                         type="file"
                                         multiple
                                         onChange={e => setImage(e.target.files[0])}
+                                        placeholder="Choose your photos"
                                     />
                                 </div>
                                 <div className="file-path-wrapper">

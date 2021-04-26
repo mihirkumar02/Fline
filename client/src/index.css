@@ -114,6 +114,11 @@ input[type=password]:focus{
   border-bottom: 1px solid #3d0575 !important;
   box-shadow: 0 1px 0 0 #3d0575 !important;
 }
+
+.file-field{
+  margin: 0;
+  margin-top: 5px;
+}
 select{
   display: block;
   border: none;
