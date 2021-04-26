@@ -11,45 +11,70 @@ const AddProduct = () => {
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
     const [imageCount, setImageCount] = useState("");
-
+    const [urls, setUrls] = useState({});
+    let imageNumber;
+    let tempUrls = [];
+ 
     const history = useHistory();
 
     useEffect(() => {
-        if(image)
-            console.log(image)
-    }, [image])
+        if(urls.length){
+            console.log(urls);
+        }
+        // fetch("/product/new", {
+        //     method: "post",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Authorization": "Bearer " + localStorage.getItem("jwt"),
+        //         "Type": "seller"
+        //     },
+        //     body: JSON.stringify({
+        //         name,
+        //         description,
+        //         category,
+        //         quantity,
+        //         price,
+        //         discount
+        //     })
+        // })
+        // .then(res => res.json())
+        // .then(data => {
+        //     if(data.error){
+        //         M.toast({ html: data.error, classes: "red darken-3"})
+        //     } else {
+        //         M.toast({ html: "Product Added!", classes:"green darken-2" });
+        //         history.push('/seller/');
+        //     }
+        // })
+    }, [urls])
 
     const productSubmit = e => {
         e.preventDefault();
-        fetch("/product/new", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("jwt"),
-                "Type": "seller"
-            },
-            body: JSON.stringify({
-                name,
-                description,
-                category,
-                quantity,
-                price,
-                discount
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.error){
-                M.toast({ html: data.error, classes: "red darken-3"})
-            } else {
-                M.toast({ html: "Product Added!", classes:"green darken-2" });
-                history.push('/seller/');
+        if(imageCount){
+            for(imageNumber = 0; imageNumber < imageCount; imageNumber++){
+                const data = new FormData();
+                data.append("file", image[imageNumber])
+                data.append("upload_preset", "flinepreset")
+                data.append("cloud_name", "flinecloud")
+    
+                fetch("https://api.cloudinary.com/v1_1/flinecloud/image/upload", {
+                    method: "post",
+                    body: data
+                })
+                .then(res => res.json())
+                .then(data => {
+                    tempUrls.push(data.url);
+                })
+                .catch(err => console.log(err))
             }
-        })
+        }
+        setImageCount("")
+        setImage("")
+        setUrls({urlsData: tempUrls})
     }
 
     const updateImages = (files) => {
-        setImageCount(files.length);
+        setImageCount(files.length)
         setImage(files)
     }
 
