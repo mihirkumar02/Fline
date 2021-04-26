@@ -10,6 +10,7 @@ const AddProduct = () => {
     const [discount, setDiscount] = useState("");
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
+    const [imageCount, setImageCount] = useState("");
 
     const history = useHistory();
 
@@ -45,6 +46,11 @@ const AddProduct = () => {
                 history.push('/seller/');
             }
         })
+    }
+
+    const updateImages = (files) => {
+        setImageCount(files.length);
+        setImage(files)
     }
 
     return (
@@ -101,8 +107,7 @@ const AddProduct = () => {
                                     <input 
                                         type="file"
                                         multiple
-                                        onChange={e => setImage(e.target.files[0])}
-                                        placeholder="Choose your photos"
+                                        onChange={e => updateImages(e.target.files)}
                                     />
                                 </div>
                                 <div className="file-path-wrapper">
