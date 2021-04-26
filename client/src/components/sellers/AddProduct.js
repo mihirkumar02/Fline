@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import M from 'materialize-css';
 
@@ -9,8 +9,14 @@ const AddProduct = () => {
     const [price, setPrice] = useState("");
     const [discount, setDiscount] = useState("");
     const [category, setCategory] = useState("");
+    const [image, setImage] = useState("");
 
     const history = useHistory();
+
+    useEffect(() => {
+        if(image)
+            console.log(image)
+    }, [image])
 
     const productSubmit = e => {
         e.preventDefault();
@@ -89,6 +95,19 @@ const AddProduct = () => {
                               <option value="Video Games">Video Games</option>
                               <option value="Womens Fashion">Womens' Fashion</option>
                             </select>
+                            <div className="file-field input-field">
+                                <div className="btn">
+                                    <span>Upload Image(s)</span>
+                                    <input 
+                                        type="file"
+                                        multiple
+                                        onChange={e => setImage(e.target.files[0])}
+                                    />
+                                </div>
+                                <div className="file-path-wrapper">
+                                    <input className="file-path validate" type="text"/>
+                                </div>
+                            </div>
                            <input
                               name="quantity"
                               type="number"
