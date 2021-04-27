@@ -11,14 +11,14 @@ const AddProduct = () => {
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
     const [imageCount, setImageCount] = useState("");
-    const [urls, setUrls] = useState([]);
-    let imageNumber, urlsObject, tempUrls = [];
+    const [urls, setUrls] = useState(undefined);
+    let imageNumber, urlsObject, count, tempUrls = [];
 
     const history = useHistory();
 
     useEffect(() => {
         if(urls){
-            // console.log(urls);
+            console.log(urls);
             // fetch("/product/new", {
             //     method: "post",
             //     headers: {
@@ -51,6 +51,7 @@ const AddProduct = () => {
 
     const productSubmit = e => {
         e.preventDefault();
+        count = 0;
         if(imageCount){
             for(imageNumber = 0; imageNumber < imageCount; imageNumber++){
                 const data = new FormData();
@@ -66,14 +67,16 @@ const AddProduct = () => {
                 .then(data => {
                     tempUrls.push(data.url);
                     urlsObject = Object.assign({}, tempUrls)
+                    count++;
+                    if(count === imageCount){
+                        setUrls(urlsObject)
+                        setImageCount("")
+                        setImage("")
+                    } 
                 })
                 .catch(err => console.log(err))
             }
         }        
-        // console.log(urlsObject)
-        // setUrls(tempUrls)
-        // setImageCount("")
-        // setImage("")
     }
 
     const updateImages = (files) => {
