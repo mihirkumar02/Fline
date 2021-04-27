@@ -11,41 +11,43 @@ const AddProduct = () => {
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
     const [imageCount, setImageCount] = useState("");
-    const [urls, setUrls] = useState({});
+    const [urls, setUrls] = useState([]);
     let imageNumber;
     let tempUrls = [];
  
     const history = useHistory();
 
     useEffect(() => {
-        if(urls.length){
-            console.log(urls);
+        if(urls){
+        // console.log(urls);
+            fetch("/product/new", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("jwt"),
+                    "Type": "seller"
+                },
+                body: JSON.stringify({
+                    name,
+                    description,
+                    category,
+                    quantity,
+                    price,
+                    discount,
+                    urls
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.error){
+                    M.toast({ html: data.error, classes: "red darken-3"})
+                } else {
+                    M.toast({ html: "Product Added!", classes:"green darken-2" });
+                    setUrls([]) // error (double upload)
+                    history.push('/seller/');
+                }
+            })
         }
-        // fetch("/product/new", {
-        //     method: "post",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Authorization": "Bearer " + localStorage.getItem("jwt"),
-        //         "Type": "seller"
-        //     },
-        //     body: JSON.stringify({
-        //         name,
-        //         description,
-        //         category,
-        //         quantity,
-        //         price,
-        //         discount
-        //     })
-        // })
-        // .then(res => res.json())
-        // .then(data => {
-        //     if(data.error){
-        //         M.toast({ html: data.error, classes: "red darken-3"})
-        //     } else {
-        //         M.toast({ html: "Product Added!", classes:"green darken-2" });
-        //         history.push('/seller/');
-        //     }
-        // })
     }, [urls])
 
     const productSubmit = e => {
@@ -70,7 +72,7 @@ const AddProduct = () => {
         }
         setImageCount("")
         setImage("")
-        setUrls({urlsData: tempUrls})
+        setUrls(prevUrls => [...prevUrls, tempUrls])
     }
 
     const updateImages = (files) => {

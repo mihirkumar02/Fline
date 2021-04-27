@@ -13,7 +13,7 @@ const isLoggedIn = require('../middleware/auth');
 // order
 
 router.post('/product/new', isLoggedIn, (req, res) => {
-    const { name, description, category, quantity, price, discount /*, options, photos*/ } = req.body;
+    const { name, description, category, quantity, price, discount, urls /*, options */ } = req.body;
     if(!name || !description || !category || !quantity || !price) {
         return res.status(422).json({ error: "Please enter all fields!" })
     }
@@ -34,7 +34,7 @@ router.post('/product/new', isLoggedIn, (req, res) => {
         quantity,
         price,
         discount,
-        //photo: url,
+        photos: urls, // pass the urls as array of objects if possible
         soldBy: req.user
     })
 
