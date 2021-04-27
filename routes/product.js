@@ -26,25 +26,27 @@ router.post('/product/new', isLoggedIn, (req, res) => {
         return res.status(422).json({ error: "Discount can't be negative!" })
     }
 
-    req.user.password = undefined;
-    const product = new Product({
-        name,
-        description,
-        category,
-        quantity,
-        price,
-        discount,
-        photos: urls, // pass the urls as array of objects if possible
-        soldBy: req.user
-    })
+    console.log(urls)
 
-    product.save()
-        .then(result => {
-            res.json({ product: result })
-        }) 
-        .catch(err => {
-            console.log(err);
-        })
+    // req.user.password = undefined;
+    // const product = new Product({
+    //     name,
+    //     description,
+    //     category,
+    //     quantity,
+    //     price,
+    //     discount,
+    //     photos: urls, // pass the urls as array of objects if possible
+    //     soldBy: req.user
+    // })
+
+    // product.save()
+    //     .then(result => {
+    //         res.json({ product: result })
+    //     }) 
+    //     .catch(err => {
+    //         console.log(err);
+    //     })
 })
 
 // for seller dashboard

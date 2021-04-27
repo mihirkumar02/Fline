@@ -19,7 +19,7 @@ const AddProduct = () => {
 
     useEffect(() => {
         if(urls){
-        // console.log(urls);
+         console.log(urls);
             fetch("/product/new", {
                 method: "post",
                 headers: {
