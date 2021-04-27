@@ -12,39 +12,40 @@ const AddProduct = () => {
     const [image, setImage] = useState("");
     const [imageCount, setImageCount] = useState("");
     const [urls, setUrls] = useState([]);
-    let imageNumber, tempUrls = [];
+    let imageNumber, urlsObject, tempUrls = [];
 
     const history = useHistory();
 
     useEffect(() => {
         if(urls){
-            fetch("/product/new", {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + localStorage.getItem("jwt"),
-                    "Type": "seller"
-                },
-                body: JSON.stringify({
-                    name,
-                    description,
-                    category,
-                    quantity,
-                    price,
-                    discount,
-                    urls
-                })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.error){
-                    M.toast({ html: data.error, classes: "red darken-3"})
-                } else {
-                    M.toast({ html: "Product Added!", classes:"green darken-2" });
-                    setUrls([]) // error (double upload)
-                    history.push('/seller/');
-                }
-            })
+            // console.log(urls);
+            // fetch("/product/new", {
+            //     method: "post",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //         "Authorization": "Bearer " + localStorage.getItem("jwt"),
+            //         "Type": "seller"
+            //     },
+            //     body: JSON.stringify({
+            //         name,
+            //         description,
+            //         category,
+            //         quantity,
+            //         price,
+            //         discount,
+            //         photos: urls
+            //     })
+            // })
+            // .then(res => res.json())
+            // .then(data => {
+            //     if(data.error){
+            //         M.toast({ html: data.error, classes: "red darken-3"})
+            //     } else {
+            //         M.toast({ html: "Product Added!", classes:"green darken-2" });
+            //         setUrls([]) // error (double upload)
+            //         history.push('/seller/');
+            //     }
+            // })
         }
     }, [urls])
 
@@ -63,24 +64,16 @@ const AddProduct = () => {
                 })
                 .then(res => res.json())
                 .then(data => {
-                    // console.log("here")
-                    // console.log(data.url)
-                    // setUrls([
-                    //     ...urls,
-                    //     {url: data.url}]
-                    // )
-                    // urlObject = {
-                    //     url: data.url
-                    // }
-                    // console.log(urlObject)
                     tempUrls.push(data.url);
+                    urlsObject = Object.assign({}, tempUrls)
                 })
                 .catch(err => console.log(err))
             }
-        }
-        setUrls(tempUrls)
-        setImageCount("")
-        setImage("")
+        }        
+        // console.log(urlsObject)
+        // setUrls(tempUrls)
+        // setImageCount("")
+        // setImage("")
     }
 
     const updateImages = (files) => {

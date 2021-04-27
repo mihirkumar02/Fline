@@ -13,7 +13,8 @@ const isLoggedIn = require('../middleware/auth');
 // order
 
 router.post('/product/new', isLoggedIn, (req, res) => {
-    const { name, description, category, quantity, price, discount, urls /*, options */ } = req.body;
+    console.log(req.body);
+    const { name, description, category, quantity, price, discount, photos /*, options */ } = req.body;
     if(!name || !description || !category || !quantity || !price) {
         return res.status(422).json({ error: "Please enter all fields!" })
     }
@@ -26,7 +27,7 @@ router.post('/product/new', isLoggedIn, (req, res) => {
         return res.status(422).json({ error: "Discount can't be negative!" })
     }
 
-    console.log(urls)
+    console.log(photos);
 
     // req.user.password = undefined;
     // const product = new Product({
