@@ -12,14 +12,12 @@ const AddProduct = () => {
     const [image, setImage] = useState("");
     const [imageCount, setImageCount] = useState("");
     const [urls, setUrls] = useState([]);
-    let imageNumber;
-    let tempUrls = [];
- 
+    let imageNumber, tempUrls = [];
+
     const history = useHistory();
 
     useEffect(() => {
         if(urls){
-         console.log(urls);
             fetch("/product/new", {
                 method: "post",
                 headers: {
@@ -65,14 +63,24 @@ const AddProduct = () => {
                 })
                 .then(res => res.json())
                 .then(data => {
+                    // console.log("here")
+                    // console.log(data.url)
+                    // setUrls([
+                    //     ...urls,
+                    //     {url: data.url}]
+                    // )
+                    // urlObject = {
+                    //     url: data.url
+                    // }
+                    // console.log(urlObject)
                     tempUrls.push(data.url);
                 })
                 .catch(err => console.log(err))
             }
         }
+        setUrls(tempUrls)
         setImageCount("")
         setImage("")
-        setUrls(prevUrls => [...prevUrls, tempUrls])
     }
 
     const updateImages = (files) => {
