@@ -33,7 +33,7 @@ const productSchema = new mongoose.Schema({
         max: 100,
         default: 0
     },
-    photos: [], // schema correction needed
+    photos: {}, 
     options: [
         {
             type: String

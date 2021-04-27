@@ -13,8 +13,7 @@ const isLoggedIn = require('../middleware/auth');
 // order
 
 router.post('/product/new', isLoggedIn, (req, res) => {
-    console.log(req.body);
-    const { name, description, category, quantity, price, discount, photos /*, options */ } = req.body;
+    const { name, description, category, quantity, price, discount, urls /*, options */ } = req.body;
     if(!name || !description || !category || !quantity || !price) {
         return res.status(422).json({ error: "Please enter all fields!" })
     }
@@ -27,27 +26,26 @@ router.post('/product/new', isLoggedIn, (req, res) => {
         return res.status(422).json({ error: "Discount can't be negative!" })
     }
 
-    console.log(photos);
 
-    // req.user.password = undefined;
-    // const product = new Product({
-    //     name,
-    //     description,
-    //     category,
-    //     quantity,
-    //     price,
-    //     discount,
-    //     photos: urls, // pass the urls as array of objects if possible
-    //     soldBy: req.user
-    // })
+    req.user.password = undefined;
+    const product = new Product({
+        name,
+        description,
+        category,
+        quantity,
+        price,
+        discount,
+        photos: urls, 
+        soldBy: req.user
+    })
 
-    // product.save()
-    //     .then(result => {
-    //         res.json({ product: result })
-    //     }) 
-    //     .catch(err => {
-    //         console.log(err);
-    //     })
+    product.save()
+        .then(result => {
+            res.json({ product: result })
+        }) 
+        .catch(err => {
+            console.log(err);
+        })
 })
 
 // for seller dashboard

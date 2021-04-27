@@ -18,34 +18,33 @@ const AddProduct = () => {
 
     useEffect(() => {
         if(urls){
-            console.log(urls);
-            // fetch("/product/new", {
-            //     method: "post",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //         "Authorization": "Bearer " + localStorage.getItem("jwt"),
-            //         "Type": "seller"
-            //     },
-            //     body: JSON.stringify({
-            //         name,
-            //         description,
-            //         category,
-            //         quantity,
-            //         price,
-            //         discount,
-            //         photos: urls
-            //     })
-            // })
-            // .then(res => res.json())
-            // .then(data => {
-            //     if(data.error){
-            //         M.toast({ html: data.error, classes: "red darken-3"})
-            //     } else {
-            //         M.toast({ html: "Product Added!", classes:"green darken-2" });
-            //         setUrls([]) // error (double upload)
-            //         history.push('/seller/');
-            //     }
-            // })
+            fetch("/product/new", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("jwt"),
+                    "Type": "seller"
+                },
+                body: JSON.stringify({
+                    name,
+                    description,
+                    category,
+                    quantity,
+                    price,
+                    discount,
+                    urls
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.error){
+                    M.toast({ html: data.error, classes: "red darken-3"})
+                } else {
+                    M.toast({ html: "Product Added!", classes:"green darken-2" });
+                    setUrls(undefined) 
+                    history.push('/seller/');
+                }
+            })
         }
     }, [urls])
 
@@ -66,7 +65,8 @@ const AddProduct = () => {
                 .then(res => res.json())
                 .then(data => {
                     tempUrls.push(data.url);
-                    urlsObject = Object.assign({}, tempUrls)
+                    urlsObject = Object.assign({}, tempUrls) // the trick which worked
+                    // Converting array (tempUrls) to object.. doing this step for all urls in loop
                     count++;
                     if(count === imageCount){
                         setUrls(urlsObject)
