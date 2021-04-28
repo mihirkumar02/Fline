@@ -11,6 +11,7 @@ const EditProduct = () => {
     const [quantity, setQuantity] = useState("");
     const [price, setPrice] = useState("");
     const [discount, setDiscount] = useState("");
+    const [urls, setUrls] = useState(undefined);
 
 
     useEffect(() => {
@@ -27,6 +28,7 @@ const EditProduct = () => {
             setQuantity(data.product.quantity)
             setPrice(data.product.price)
             setDiscount(data.product.discount)
+            setUrls(data.product.photos)
         })
     }, [])
 
@@ -83,6 +85,9 @@ const EditProduct = () => {
                               onChange={e => setDescription(e.target.value)}
                               required
                            />
+                           {urls && Object.values.forEach(photo => {
+                               <img src={photo} height="200px" width="200px"/>
+                           })}
                            <input
                               name="quantity"
                               type="number"
