@@ -70,6 +70,10 @@ const EditProduct = () => {
         console.log(urls);
     }
 
+    const addImages = () => {
+        console.log("Clicked")
+    }
+
     return (
         <section id="formPage">
             <div className="container">
@@ -100,7 +104,7 @@ const EditProduct = () => {
                                })}
                                {!urls && <img src={dummy} height="100px" width="150px"/> /* preloader for images */}
                                {urls && Object.keys(urls).length < 3 && 
-                                    <img src={plus} className="plus"/>
+                                    <img src={plus} className="plus" onClick={addImages}/>
                                /* Plus button for more images (if less than 3) */
                                }
                            </div>
