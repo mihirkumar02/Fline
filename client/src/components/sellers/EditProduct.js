@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import M from 'materialize-css';
+import dummy from '../../dummyprod.png'
 
 const EditProduct = () => {
     const history = useHistory();
@@ -88,6 +89,7 @@ const EditProduct = () => {
                            {urls && Object.keys(urls).map((key) => {
                                return <img key={key} src={urls[key]} height="100px" width="100px"/>
                            })}
+                           {!urls && <img src={dummy} height="100px" width="150px"/> /* preloader for images */}
                            <input
                               name="quantity"
                               type="number"
