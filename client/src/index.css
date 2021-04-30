@@ -245,6 +245,15 @@ select:focus{
   align-items: center;
   justify-content: space-around;
 }
+.editFormImage{
+  height: 100px;
+  width: 100px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.editFormImage:hover{
+  opacity: 0.6;
+}
 
 
 @media screen and (max-width:830px){

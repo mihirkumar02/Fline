@@ -63,6 +63,12 @@ const EditProduct = () => {
         })
     }
 
+    const tempDelete = (key) => {
+        delete urls[key]; // allows us to remove the key-value pair from the object
+        setUrls(urls);
+        console.log(urls);
+    }
+
     return (
         <section id="formPage">
             <div className="container">
@@ -87,7 +93,7 @@ const EditProduct = () => {
                               required
                            />
                            {urls && Object.keys(urls).map((key) => {
-                               return <img key={key} src={urls[key]} height="100px" width="100px"/>
+                               return <img className="editFormImage" onClick={() => tempDelete(key)} key={key} src={urls[key]}/>
                            })}
                            {!urls && <img src={dummy} height="100px" width="150px"/> /* preloader for images */}
                            <input
