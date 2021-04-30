@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import M from 'materialize-css';
-import dummy from '../../dummyprod.png'
+import dummy from '../../dummyprod.png';
+import plus from '../../plus.png';
 
 const EditProduct = () => {
     const history = useHistory();
@@ -92,10 +93,17 @@ const EditProduct = () => {
                               onChange={e => setDescription(e.target.value)}
                               required
                            />
-                           {urls && Object.keys(urls).map((key) => {
-                               return <img className="editFormImage" onClick={() => tempDelete(key)} key={key} src={urls[key]}/>
-                           })}
-                           {!urls && <img src={dummy} height="100px" width="150px"/> /* preloader for images */}
+                           <div className="center">
+                               {/* put a cross on image deleted temporarily */}
+                               {urls && Object.keys(urls).map((key) => {
+                                   return <img className="editFormImage" onClick={() => tempDelete(key)} key={key} src={urls[key]}/>
+                               })}
+                               {!urls && <img src={dummy} height="100px" width="150px"/> /* preloader for images */}
+                               {urls && Object.keys(urls).length < 3 && 
+                                    <img src={plus} className="plus"/>
+                               /* Plus button for more images (if less than 3) */
+                               }
+                           </div>
                            <input
                               name="quantity"
                               type="number"
