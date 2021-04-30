@@ -85,8 +85,8 @@ const EditProduct = () => {
                               onChange={e => setDescription(e.target.value)}
                               required
                            />
-                           {urls && Object.values.forEach(photo => {
-                               <img src={photo} height="200px" width="200px"/>
+                           {urls && Object.keys(urls).map((key) => {
+                               return <img key={key} src={urls[key]} height="100px" width="100px"/>
                            })}
                            <input
                               name="quantity"
