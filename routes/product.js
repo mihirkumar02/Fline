@@ -68,7 +68,7 @@ router.get('/product/:id', isLoggedIn, (req, res) => {
 
 // to save edit details
 router.put('/product/:id', isLoggedIn, (req, res) => {
-    const {name, description, quantity, price, discount} = req.body;
+    const {name, description, quantity, price, discount, urls} = req.body;
 
     if(!name || !description || !quantity || !price || !discount){
         return res.status(422).json({ error: "Please enter all fields! "})
@@ -79,7 +79,8 @@ router.put('/product/:id', isLoggedIn, (req, res) => {
         description,
         quantity,
         price,
-        discount
+        discount,
+        photos: urls
     })
         .then(product => {
             res.json({ success: true, product})

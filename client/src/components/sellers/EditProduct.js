@@ -15,7 +15,6 @@ const EditProduct = () => {
     const [discount, setDiscount] = useState("");
     const [urls, setUrls] = useState(undefined);
 
-
     useEffect(() => {
         fetch(`/product/${id}`, {
             headers: {
@@ -48,7 +47,8 @@ const EditProduct = () => {
                 description,
                 quantity,
                 price,
-                discount
+                discount,
+                urls
             })
         })
         .then(res => res.json())
@@ -67,7 +67,6 @@ const EditProduct = () => {
     const tempDelete = (key) => {
         delete urls[key]; // allows us to remove the key-value pair from the object
         setUrls(urls);
-        console.log(urls);
     }
 
     const addImages = () => {
@@ -98,7 +97,7 @@ const EditProduct = () => {
                               required
                            />
                            <div className="center">
-                               {/* put a cross on image deleted temporarily */}
+                               {/* put a cross on image deleted temporarily or do something with useEffect on URLs */}
                                {urls && Object.keys(urls).map((key) => {
                                    return <img className="editFormImage" onClick={() => tempDelete(key)} key={key} src={urls[key]}/>
                                })}
