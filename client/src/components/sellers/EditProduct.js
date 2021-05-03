@@ -79,25 +79,27 @@ const EditProduct = () => {
     }
 
     const ImageUploader = () => {
-        <div className="file-field input-field">
-            <div className="btn">
-                <span>Upload Image</span>
-                <input 
-                    type="file"
-                    multiple
-                    /*onChange={e => updateImages(e.target.files)}*/
-                />
+        return(
+            <div className="file-field input-field">
+                <div className="btn">
+                    <span>Upload Image</span>
+                    <input 
+                        type="file"
+                        multiple
+                        /*onChange={e => updateImages(e.target.files)}*/
+                    />
+                </div>
+                <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text"/>
+                </div>
+                <button 
+                    className="btn waves-effect waves-light green darken-2"
+                    onClick={closeImageField}
+                >
+                    Cancel
+                </button>
             </div>
-            <div className="file-path-wrapper">
-                <input className="file-path validate" type="text"/>
-            </div>
-            <button 
-                className="btn waves-effect waves-light green darken-2"
-                onClick={closeImageField}
-            >
-                Cancel
-            </button>
-        </div>
+        )
     }
 
     return (
