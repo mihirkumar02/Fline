@@ -78,10 +78,6 @@ const EditProduct = () => {
         setUrls(urls);
     }
 
-    const addImages = () => {
-        console.log("Clicked")
-    }
-
     const ImageUploader = () => {
         <div className="file-field input-field">
             <div className="btn">
@@ -89,7 +85,7 @@ const EditProduct = () => {
                 <input 
                     type="file"
                     multiple
-                    onChange={e => updateImages(e.target.files)}
+                    /*onChange={e => updateImages(e.target.files)}*/
                 />
             </div>
             <div className="file-path-wrapper">
@@ -134,7 +130,7 @@ const EditProduct = () => {
                                })}
                                {!urls && <img src={dummy} height="100px" width="150px"/> /* preloader for images */}
                                {urls && Object.keys(urls).length < 3 && 
-                                    <img src={plus} className="plus" onClick={addImages}/>
+                                    <img src={plus} className="plus" onClick={openImageField}/>
                                /* Plus button for more images (if less than 3) */
                                }
                            </div>
