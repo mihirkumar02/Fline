@@ -14,6 +14,7 @@ const EditProduct = () => {
     const [price, setPrice] = useState("");
     const [discount, setDiscount] = useState("");
     const [urls, setUrls] = useState(undefined);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         fetch(`/product/${id}`, {
@@ -32,6 +33,14 @@ const EditProduct = () => {
             setUrls(data.product.photos)
         })
     }, [])
+
+    const openImageField = () => {
+        setIsOpen(true)
+    }
+
+    const closeImageField = () => {
+        setIsOpen(false)
+    }
 
     const productUpdate = e => {
         e.preventDefault();
@@ -73,6 +82,28 @@ const EditProduct = () => {
         console.log("Clicked")
     }
 
+    const ImageUploader = () => {
+        <div className="file-field input-field">
+            <div className="btn">
+                <span>Upload Image</span>
+                <input 
+                    type="file"
+                    multiple
+                    onChange={e => updateImages(e.target.files)}
+                />
+            </div>
+            <div className="file-path-wrapper">
+                <input className="file-path validate" type="text"/>
+            </div>
+            <button 
+                className="btn waves-effect waves-light green darken-2"
+                onClick={closeImageField}
+            >
+                Cancel
+            </button>
+        </div>
+    }
+
     return (
         <section id="formPage">
             <div className="container">
@@ -107,6 +138,7 @@ const EditProduct = () => {
                                /* Plus button for more images (if less than 3) */
                                }
                            </div>
+                           {isOpen ? <ImageUploader/> : <></>}
                            <input
                               name="quantity"
                               type="number"
