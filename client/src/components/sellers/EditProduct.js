@@ -16,7 +16,6 @@ const EditProduct = () => {
     const [urls, setUrls] = useState(undefined);
     const [isOpen, setIsOpen] = useState(false);
     const [image, setImage] = useState("");
-    const [newUrl, setNewUrl] = useState("");
 
     useEffect(() => {
         fetch(`/product/${id}`, {
@@ -117,16 +116,8 @@ const EditProduct = () => {
         })
         .then(res => res.json())
         .then(data => {
-            // tempUrls.push(data.url);
-            // urlsObject = Object.assign({}, tempUrls) // the trick which worked
-            // // Converting array (tempUrls) to object.. doing this step for all urls in loop
-            // count++;
-            // if(count === imageCount){
-            //     setUrls(urlsObject)
-            //     setImageCount("")
-            //     setImage("")
-            // } 
-            console.log(data);
+            urls[Object.keys(urls).length] = data.url;
+            console.log(urls);
         })
         .catch(err => console.log(err))
     }
