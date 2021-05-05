@@ -116,8 +116,8 @@ const EditProduct = () => {
         })
         .then(res => res.json())
         .then(data => {
-            urls[Object.keys(urls).length] = data.url;
-            console.log(urls);
+            urls[Object.keys(urls).length] = data.url; // adding new url to temporary urls Object 
+            // 1: "url", 2: "url" .... adding in this format
         })
         .catch(err => console.log(err))
     }
