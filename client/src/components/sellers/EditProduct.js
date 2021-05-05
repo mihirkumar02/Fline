@@ -119,7 +119,7 @@ const EditProduct = () => {
                         Add
                     </button>
                     <button 
-                        className="btn waves-effect waves-light green darken-2"
+                        className="btn waves-effect waves-light red darken-2"
                         onClick={closeImageField}
                     >
                         Cancel
