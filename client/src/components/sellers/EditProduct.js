@@ -32,6 +32,8 @@ const EditProduct = () => {
             setPrice(data.product.price)
             setDiscount(data.product.discount)
             setUrls(data.product.photos)
+            // console.log(data.product.photos)
+            // Another bug detected: URLS inside the object are not in order if middle one is deleted.
         })
     }, [])
 
@@ -96,6 +98,8 @@ const EditProduct = () => {
 
     const tempDelete = (key) => {
         delete urls[key]; // allows us to remove the key-value pair from the object
+        M.toast({ html: "Photo Removed!", classes:"red darken-2" });
+        setIsOpen(true);
         setUrls(urls);
     }
 
@@ -118,6 +122,10 @@ const EditProduct = () => {
         .then(data => {
             urls[Object.keys(urls).length] = data.url; // adding new url to temporary urls Object 
             // 1: "url", 2: "url" .... adding in this format
+            // INCORRECT WAY TO UPDATE STATE IN REACT
+            M.toast({ html: "Photo Uploaded!", classes:"green darken-2" });
+            setImage("");
+            setIsOpen(false);
         })
         .catch(err => console.log(err))
     }
