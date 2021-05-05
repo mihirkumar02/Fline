@@ -51,7 +51,7 @@ const EditProduct = () => {
     }
 
     useEffect(() => {
-        <Images />
+        <Images /> // re-render Images if urls change (temporary delete / add)
     }, [urls])
 
     const openImageField = () => {
@@ -102,22 +102,29 @@ const EditProduct = () => {
         return(
             <div className="file-field input-field">
                 <div className="btn">
-                    <span>Upload Image</span>
+                    <span>Search Image</span>
                     <input 
                         type="file"
-                        multiple
                         /*onChange={e => updateImages(e.target.files)}*/
                     />
                 </div>
                 <div className="file-path-wrapper">
                     <input className="file-path validate" type="text"/>
                 </div>
-                <button 
-                    className="btn waves-effect waves-light green darken-2"
-                    onClick={closeImageField}
-                >
-                    Cancel
-                </button>
+                <div className="addOptions">
+                    <button 
+                        className="btn waves-effect waves-light green darken-2"
+                        //onClick={closeImageField}
+                    >
+                        Add
+                    </button>
+                    <button 
+                        className="btn waves-effect waves-light green darken-2"
+                        onClick={closeImageField}
+                    >
+                        Cancel
+                    </button>
+                </div>
             </div>
         )
     }
