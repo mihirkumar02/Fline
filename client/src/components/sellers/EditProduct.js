@@ -34,6 +34,26 @@ const EditProduct = () => {
         })
     }, [])
 
+    const Images = () => {
+        return(
+            <div className="center">
+                {/* put a cross on image deleted temporarily or do something with useEffect on URLs */}
+                {urls && Object.keys(urls).map((key) => {
+                    return <img className="editFormImage" onClick={() => tempDelete(key)} key={key} src={urls[key]}/>
+                })}
+                {!urls && <img src={dummy} height="100px" width="150px"/> /* preloader for images */}
+                {urls && Object.keys(urls).length < 3 && 
+                     <img src={plus} className="plus" onClick={openImageField}/>
+                /* Plus button for more images (if less than 3) */
+                }
+            </div>
+        )
+    }
+
+    useEffect(() => {
+        <Images />
+    }, [urls])
+
     const openImageField = () => {
         setIsOpen(true)
     }
@@ -125,17 +145,7 @@ const EditProduct = () => {
                               onChange={e => setDescription(e.target.value)}
                               required
                            />
-                           <div className="center">
-                               {/* put a cross on image deleted temporarily or do something with useEffect on URLs */}
-                               {urls && Object.keys(urls).map((key) => {
-                                   return <img className="editFormImage" onClick={() => tempDelete(key)} key={key} src={urls[key]}/>
-                               })}
-                               {!urls && <img src={dummy} height="100px" width="150px"/> /* preloader for images */}
-                               {urls && Object.keys(urls).length < 3 && 
-                                    <img src={plus} className="plus" onClick={openImageField}/>
-                               /* Plus button for more images (if less than 3) */
-                               }
-                           </div>
+                           <Images />
                            {isOpen ? <ImageUploader/> : <></>}
                            <input
                               name="quantity"
