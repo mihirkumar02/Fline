@@ -15,6 +15,8 @@ const EditProduct = () => {
     const [discount, setDiscount] = useState("");
     const [urls, setUrls] = useState(undefined);
     const [isOpen, setIsOpen] = useState(false);
+    const [image, setImage] = useState("");
+    const [newUrl, setNewUrl] = useState("");
 
     useEffect(() => {
         fetch(`/product/${id}`, {
@@ -98,6 +100,11 @@ const EditProduct = () => {
         setUrls(urls);
     }
 
+    const updateImage = (file) => {
+        setImage(file);
+        console.log(image);
+    }
+
     const ImageUploader = () => {
         return(
             <div className="file-field input-field">
@@ -105,7 +112,7 @@ const EditProduct = () => {
                     <span>Search Image</span>
                     <input 
                         type="file"
-                        /*onChange={e => updateImages(e.target.files)}*/
+                        onChange={e => updateImage(e.target.files[0])}
                     />
                 </div>
                 <div className="file-path-wrapper">
