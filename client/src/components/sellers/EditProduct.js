@@ -102,7 +102,33 @@ const EditProduct = () => {
 
     const updateImage = (file) => {
         setImage(file);
-        console.log(image);
+    }
+
+    const uploadImageToCloud = e => {
+        e.preventDefault();
+        const data = new FormData();
+        data.append("file", image)
+        data.append("upload_preset", "flinepreset")
+        data.append("cloud_name", "flinecloud")
+
+        fetch("https://api.cloudinary.com/v1_1/flinecloud/image/upload", {
+            method: "post",
+            body: data
+        })
+        .then(res => res.json())
+        .then(data => {
+            // tempUrls.push(data.url);
+            // urlsObject = Object.assign({}, tempUrls) // the trick which worked
+            // // Converting array (tempUrls) to object.. doing this step for all urls in loop
+            // count++;
+            // if(count === imageCount){
+            //     setUrls(urlsObject)
+            //     setImageCount("")
+            //     setImage("")
+            // } 
+            console.log(data);
+        })
+        .catch(err => console.log(err))
     }
 
     const ImageUploader = () => {
@@ -121,7 +147,8 @@ const EditProduct = () => {
                 <div className="addOptions">
                     <button 
                         className="btn waves-effect waves-light green darken-2"
-                        //onClick={closeImageField}
+                        type="submit"
+                        onClick={uploadImageToCloud}
                     >
                         Add
                     </button>
