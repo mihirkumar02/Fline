@@ -48,6 +48,9 @@ const AddProduct = () => {
         }
     }, [urls])
 
+    // Bug: SELLER cannot add a product without adding atleast 1 photo
+    // Bug: Set a limit on number of photos for a particular product in add + edit product
+
     const productSubmit = e => {
         e.preventDefault();
         count = 0;
