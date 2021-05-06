@@ -4,6 +4,9 @@ body{
   padding: 0;
   font-family: 'Comfortaa', sans-serif !important;
 }
+.buyerHome{
+  background: #baffa5 !important;
+}
 .paddedNav{
   padding: 0 20px;
 }

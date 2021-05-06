@@ -15,14 +15,16 @@ const BuyerHome = () => {
     }, [])
 
     return (
-        <div className="container">
-            <section id="carouselHolder">
+        <div className="buyerHome">
+            <div className="container">
+                <section id="carouselHolder">
 
-            </section>
-            <section id="productCards">
+                </section>
+                <section id="productCards">
 
-            </section>
-            
+                </section>
+
+            </div>
         </div>
     )
 }
