@@ -111,8 +111,10 @@ const Navbar = () => {
                      <li className="optionsLi"><Link to="/seller/inventory">Inventory</Link></li>
                   </ul>
                  ) : (
-                   <>
-                   </>
+                  <ul id="nav-mobile" className="right">
+                     {/*<li className="optionsLi"><Link to="/seller/product/add">Add</Link></li>*/}
+                     <li className="optionsLi"><Link to="/cart">Cart</Link></li>
+                  </ul>
                  )}
                  </>
                ) : (
