@@ -103,7 +103,7 @@ const MyProducts = () => {
                     <tbody>
                         {products.map((item, index) => 
                             {
-                                if(index > 0){
+                                if(index >= 0){
                                     return (
                                         <tr key={index} className="orange lighten-2">
                                             <td>{item.name}</td>
