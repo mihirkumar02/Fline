@@ -101,21 +101,19 @@ const MyProducts = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((item, index) => 
+                        {products.length && products.map((item, index) => 
                             {
-                                if(index >= 0){
-                                    return (
-                                        <tr key={index} className="orange lighten-2">
-                                            <td>{item.name}</td>
-                                            <td><b>{item.description}</b></td>
-                                            <td><b>{item.quantity}</b></td>
-                                            <td><b>{item.price}</b></td>
-                                            <td><b>{item.discount} %</b></td> 
-                                            <td><i onClick={() => fetchEditForm(item._id)} className="edit material-icons">edit</i></td> 
-                                            <td><i onClick={() => openPopup(item._id)} className="edit material-icons">delete</i></td> 
-                                        </tr>
-                                    )
-                                }
+                                return (
+                                    <tr key={index} className="orange lighten-2">
+                                        <td>{item.name}</td>
+                                        <td><b>{item.description}</b></td>
+                                        <td><b>{item.quantity}</b></td>
+                                        <td><b>{item.price}</b></td>
+                                        <td><b>{item.discount} %</b></td> 
+                                        <td><i onClick={() => fetchEditForm(item._id)} className="edit material-icons">edit</i></td> 
+                                        <td><i onClick={() => openPopup(item._id)} className="edit material-icons">delete</i></td> 
+                                    </tr>
+                                )
                             }
                         )}
                     </tbody>
